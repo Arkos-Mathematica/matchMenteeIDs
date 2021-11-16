@@ -1,23 +1,24 @@
-import numpy as np
 import csv
 from sys import argv
 import os
+from tkinter import *
+from tkinter import filedialog
 #TODO add in help 
 #TODO we somehow have more names unmatched now than before (it's not spacing). It seems like we were previously matching things that we shouldn't have
 #TODO shorten
 
 #inputs: the relative path of the short file, the relative path of the long file, directory of output
 if len(argv)<4:
-    print('Please indicate the appropraite path or directory. Both relative and absolute paths are accepted.')
-    short_path = input('The name (with extension) of the csv with mentee names (include the relative path if in a different folder): ')
+    short_path = filedialog.askopenfilename(initialdir="..", title="Select the CSV of Students to Match")
     while os.path.exists(short_path) != True or not(short_path.endswith(".csv")):
-        short_path= input ('Sorry, that isn\'t a valid path and name of a csv file. Please input one: ')
-    long_path = input('The name (with extension) of the csv with student IDs (include the relative path if in a different folder): ')
+        short_path = filedialog.askopenfilename(initialdir="..", title="Select the CSV of Students to Match")
+    
+    long_path = filedialog.askopenfilename(initialdir="..", title="Select the CSV of Students and Their IDs")
     while os.path.exists(long_path) != True or not(long_path.endswith(".csv")):
-        long_path= input ('Sorry, that isn\'t a valid path and name of a csv file. Please input one: ')
-    output_dir = input('The path to the folder where you want the output to go: ')
+        long_path= filedialog.askopenfilename(initialdir="..", title="Select the CSV of Students and Their IDs")
+    output_dir = filedialog.askdirectory(initialdir="..", title="Select the Output Directory")
     while not(os.path.isdir(output_dir)):
-        output_dir = input ('Sorry, that isn\'t a valid path to a directory. Please input one: ')
+        output_dir = filedialog.askdirectory(initialdir="..", title="Select the Output Directory")
 else:
     short_path = argv[1]
     long_path = argv[2]
@@ -36,8 +37,6 @@ with open(long_path, "r") as long_csv:
     IDs = [string.split(',')[4].strip() for string in long_lines]
 
 
-match=[x for x in short if x in long_matchable]
-
 #file of unmatched names
 with open(output_dir+"/Unmatched.csv", "w", newline = "", encoding = "UTF8") as f:
     writer = csv.writer(f, delimiter=",", quotechar=",", quoting=csv.QUOTE_MINIMAL) 
@@ -46,7 +45,7 @@ with open(output_dir+"/Unmatched.csv", "w", newline = "", encoding = "UTF8") as 
         writer.writerow(i.split(','))
 
 
-
+match=[x for x in short if x in long_matchable]
 
 #file of names with IDs
 # open the file in the write mode
