@@ -53,7 +53,7 @@ def generate(short_path, long_path, output_dir):
 
     #file of names with IDs
     # open the file in the write mode
-    with open(output_dir+f'/{len(match)/len(short)}_percent_mentees_with_ids.csv', 'w', newline="", encoding='UTF8') as f:
+    with open(output_dir+f'/{len(match)/(len(short)-1)}_percent_mentees_with_ids.csv', 'w', newline="", encoding='UTF8') as f:
         # create the csv writer
         writer = csv.writer(f, delimiter=",", quotechar=",", quoting=csv.QUOTE_MINIMAL)
         # write a row to the csv file 
