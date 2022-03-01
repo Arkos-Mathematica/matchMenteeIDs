@@ -12,16 +12,16 @@ from turtle import done
 def main():
     #inputs: the relative path of the short file, the relative path of the long file, directory of output
     if len(argv)<4:
-        short_path = filedialog.askopenfilename(initialdir="..", title="Select the CSV of Students to Match")
+        short_path = filedialog.askopenfilename(initialdir=".", title="Select the CSV of Students to Match")
         while os.path.exists(short_path) != True or not(short_path.endswith(".csv")):
-            short_path = filedialog.askopenfilename(initialdir="..", title="Select the CSV of Students to Match")
+            short_path = filedialog.askopenfilename(initialdir=".", title="Select the CSV of Students to Match")
         
-        long_path = filedialog.askopenfilename(initialdir="..", title="Select the CSV of Students and Their IDs")
+        long_path = filedialog.askopenfilename(initialdir=".", title="Select the CSV of Students and Their IDs")
         while os.path.exists(long_path) != True or not(long_path.endswith(".csv")):
-            long_path= filedialog.askopenfilename(initialdir="..", title="Select the CSV of Students and Their IDs")
-        output_dir = filedialog.askdirectory(initialdir="..", title="Select the Output Directory")
+            long_path= filedialog.askopenfilename(initialdir=".", title="Select the CSV of Students and Their IDs")
+        output_dir = filedialog.askdirectory(initialdir=".", title="Select the Output Directory")
         while not(os.path.isdir(output_dir)):
-            output_dir = filedialog.askdirectory(initialdir="..", title="Select the Output Directory")
+            output_dir = filedialog.askdirectory(initialdir=".", title="Select the Output Directory")
     else:
         short_path = argv[1]
         long_path = argv[2]
