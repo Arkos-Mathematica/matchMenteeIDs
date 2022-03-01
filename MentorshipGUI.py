@@ -7,26 +7,26 @@ from MentorshipAnalysis import generate
 
 def set_short():
     global short_path
-    short_path = filedialog.askopenfilename(initialdir="..", title="Select the CSV of Students to Match")
+    short_path = filedialog.askopenfilename(initialdir=".", title="Select the CSV of Students to Match")
     while os.path.exists(short_path) != True or not(short_path.endswith(".csv")):
         print('error: invalid filetype')
-        short_path = filedialog.askopenfilename(initialdir="..", title="Select the CSV of Students to Match")
+        short_path = filedialog.askopenfilename(initialdir=".", title="Select the CSV of Students to Match")
     short_select.config(text=short_path)
 
 def set_long():
     global long_path
-    long_path = filedialog.askopenfilename(initialdir="..", title="Select the CSV of Students and Their IDs")
+    long_path = filedialog.askopenfilename(initialdir=".", title="Select the CSV of Students and Their IDs")
     while os.path.exists(long_path) != True or not(long_path.endswith(".csv")):
         print('error: invalid filetype')
-        long_path= filedialog.askopenfilename(initialdir="..", title="Select the CSV of Students and Their IDs")
+        long_path= filedialog.askopenfilename(initialdir=".", title="Select the CSV of Students and Their IDs")
     long_select.config(text=long_path)
 
 def set_dir():
     global output_dir
-    output_dir = filedialog.askdirectory(initialdir="..", title="Select the Output Directory")
+    output_dir = filedialog.askdirectory(initialdir=".", title="Select the Output Directory")
     while os.path.exists(output_dir+r"/Unmatched.csv"):
         print('error: clear old versions out of folder or rename them')
-        output_dir = filedialog.askdirectory(initialdir="..", title="Select the Output Directory")
+        output_dir = filedialog.askdirectory(initialdir=".", title="Select the Output Directory")
     output_select.config(text=output_dir)
 
 def process(short_path, long_path, output_dir):
