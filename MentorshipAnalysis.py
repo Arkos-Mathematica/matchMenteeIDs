@@ -1,6 +1,6 @@
 '''
 This is an attache project for the NCSSM Foundation. The goal was to match the names of former mentees to their residential student IDs. 
-Mentee names as well as class years are held in one spreadsheed and another contains the names of former residential students, 
+Mentee names as well as class years are held in one spreadsheet and another contains the names of former residential students, 
 their class years, and residential IDs. This code works by:
 
 1: taking user input to find the input CSV files and the desired output directory;
